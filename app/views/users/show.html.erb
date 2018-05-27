@@ -1,52 +1,40 @@
 <div class="container">
-	<div class="row">
-		<div class="col-sm-4 col-md-4 user-details">
-            <div class="user-image">
-              <% if (@user.provider == "facebook") %>
-                <% @user.image_url = @user.image_url.insert(4,"s") %>
-                <%= image_tag @user.image_url += "?type=large", :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "100x100" %>
-              <% elsif (@user.provider == "twitter") %>
-                <% @user.image_url = @user.image_url.insert(4,"s") %>
-                <% @user.image_url.slice!("_normal") %>
-                <%= image_tag @user.image_url, :class => "img-circle", :alt =>  "Karan Singh Sisodia", :size => "100x100" %>
-              <% else %>
-                <%= image_tag @user.image_url, :class => "img-circle", :alt =>  "Karan Singh Sisodia", :size => "100x100" %>
-              <% end %>
+	<div class="row shinsuke-center">
+        <div class="col-sm-6 col-md-6 user-details">
+            <div class="user-image-container">
+                <% if (@user.provider == "facebook") %>
+                    <% @user.image_url = @user.image_url.insert(4,"s") %>
+                    <%= image_tag @user.image_url += "?type=large", :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "100x100" %>
+                <% elsif (@user.provider == "twitter") %>
+                    <% @user.image_url = @user.image_url.insert(4,"s") %>
+                    <% @user.image_url.slice!("_normal") %>
+                    <%= image_tag @user.image_url, :class => "img-circle", :alt =>  "Karan Singh Sisodia", :size => "100x100" %>
+                <% else %>
+                    <%= image_tag @user.image_url, :class => "img-circle", :alt =>  "Karan Singh Sisodia", :size => "100x100" %>
+                <% end %>
             </div>
-            <div class="user-info-block">
-                <div class="user-heading">
-                    <h3><%= @user.name %></h3>
-                </div>
-                <ul class="navigation nav nav-tabs" id="myTab" >
-                    <li class="active nav-item">
-                        <a data-toggle="tab" class="nav-link active" href="#information">
-                            <span class="glyphicon glyphicon-user"></span>
-                        </a>
-                    </li>
-                    <li>
-                        <a data-toggle="tab" href="#settings" class="nav-link">
-                            <span class="glyphicon glyphicon-cog"></span>
-                        </a>
-                    </li>
-                    <li>
-                        <a data-toggle="tab" href="#events" class="nav-lik">
-                            <span class="glyphicon glyphicon-calendar"></span>
-                        </a>
-                    </li>
-                </ul>
-                <div class="user-body">
-                    <div class="tab-content">
-                        <div id="information" class="tab-pane active">
-                            <h4><%= @user.email %></h4>
-                        </div>
-                        <div id="settings" class="tab-pane">
-                            <h4>Settings</h4>
-                        </div>
-                        <div id="events" class="tab-pane">
-                            <h4>Events</h4>
-                        </div>
-                    </div>
-                </div>
+            <div class="user-name-container">
+                <h4 class="user-name"><%= @user.name %></h4>
+            </div>
+
+            <div class="user-info-container">
+                <p>
+                    <span><%= @user.email %></span>  
+                </p>
+                <p class="util-links-container">
+                    <span>
+                        <button type="button" class="btn btn-primary btn-circle">
+                            <a href="#edit">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                            </a>
+                        </button>
+                        <button type="button" class="btn btn-danger btn-circle">
+                            <a href="#delete">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </a>
+                        </button>
+                    </span>
+                </p>
             </div>
         </div>
 	</div>

@@ -8,7 +8,7 @@
       <% @citicizes.each do |citicize| %>
         <div class="col-sm-3 col-md-3 card">
           <%= link_to citicize_path(citicize.id) do %>
-            <div class="image-cotainer">
+            <div class="image-container">
               <%= image_tag(citicize.artwork, :class => "artwork") %>
             </div>
             <h4 class="album-title"><%= citicize.album %></h4>

@@ -13,15 +13,37 @@ body {
     margin-bottom: 40px;
 }
 
-.album-title {
-    color: #000;
-    min-height: 2.8em;
+.image-container {
+    width: 160px;
+    height: 160px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+@keyframes zoomIn {
+    0% {
+        transform: scale(1.0);
+    }
+    100% {
+        transform: scale(1.1);
+    }
 }
 
 .artwork {
     width: 100%;
     height: auto;
+    &:hover {
+        animation: zoomIn 1s;
+    }
 }
+
+.album-title {
+    color: #000;
+    min-height: 2.8em;
+}
+
 
 .btn-circle {
     width: 30px;

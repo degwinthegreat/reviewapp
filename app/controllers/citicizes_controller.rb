@@ -20,7 +20,6 @@ class CiticizesController < ApplicationController
     @citicize.artwork.retrieve_from_cache! params[:cache][:artwork] if params[:cache][:artwork].present?
     respond_to do |format|
       if @citicize.save
-        ConfirmMailer.confirm_mailer(@current_user, @citicize).deliver
         format.html { redirect_to @citicize, notice: '投稿しました！'}
         format.json { render :show, status: :created, location: @citicize }
       else

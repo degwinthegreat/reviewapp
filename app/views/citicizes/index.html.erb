@@ -1,0 +1,26 @@
+<h1>レビュー一覧</h1>
+
+<p><%= notice %></p>
+
+<table>
+  <tr>
+    <th>タイトル</th>
+    <th>内容</th>
+  </tr>
+
+<% @citicizes.each do |citicize| %>
+  <tr>
+    <td><%= citicize.title %></td>
+    <td><%= citicize.content %></td>
+    <td><%= citicize.album %></td>
+    <td><%= citicize.artist %></td>
+
+    <td><%= link_to '詳細を確認する', citicize_path(citicize.id) %></td>
+    <td><%= link_to 'レビューを編集する', edit_citicize_path(citicize.id) %></td>
+    <td><%= link_to 'レビューを削除する', citicize_path(citicize.id), method: :delete,data: { confirm: '本当に削除しますか？'}%>
+  </tr>
+  <% end %>
+</table>
+
+<%= link_to 'レビュー一覧画面にもどる', citicizes_path %>
+<%= link_to '新しいレビューを投稿する', new_citicize_path %>

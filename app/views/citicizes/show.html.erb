@@ -1,0 +1,31 @@
+<h1>レビュー詳細画面</h1>
+<p>タイトル：<%= @citicize.title %></p>
+<p>内容:<%= @citicize.content %></p>
+<p>アルバム名:<%= @citicize.album %></p>
+<% unless @citicize.artwork.blank? %>
+  <%= image_tag(@citicize.artwork) %>
+<% else %>
+  <%= image_tag('noimage.png') %>
+<% end %>
+<p>アーティスト名:<%= @citicize.artist %></p>
+
+<% unless @citicize.user_id == current_user %>
+  <% if @estimate.present? %>
+    <p><%= @estimate[0].rate %></p>
+    <%= link_to 'レビューの評価を削除する', estimate_path(citicize_id: @citicize.id), method: :delete %>
+  <% else %>
+    <%= link_to 'レビューを評価する', estimate_path(citicize_id: @citicize.id), method: :post %>
+  <% end %>
+<% end %>
+
+<p>コメント一覧</p>
+<div id="comments_area">
+  <!-- 投稿されたコメント一覧をレビューの詳細ページに表示するためのrender -->
+    <%= render partial: 'comments/index', locals: { comments: @comments, citicize: @citicize } %>
+</div>
+
+  <!-- コメント入力欄をレビューの詳細ページに表示するためのrender -->
+    <%= render partial: 'comments/form', locals: { comment: @comment, citicize: @citicize } %>
+<%= link_to '編集', edit_citicize_path(@citicize) %>
+
+<%= link_to '一覧に戻る', citicizes_path %>

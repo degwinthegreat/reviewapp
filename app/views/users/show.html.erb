@@ -1,0 +1,10 @@
+<h1><%= @user.name %>のページ</h1>
+
+<% if (@user.provider == "facebook") %>
+<%= image_tag @user.image_url += "?type=large" %>
+<% elsif (@user.provider == "twitter") %>
+  <% @user.image_url.slice!("_normal") %>
+  <%= image_tag @user.image_url %>
+<% else %>
+  <%= image_tag @user.image_url %>
+<% end %>

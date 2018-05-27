@@ -1,0 +1,26 @@
+<h3>以下の内容で、送信する。</h3>
+
+<%= form_with(model: @citicize, url: citicizes_path, local: true) do |form| %>
+  <%= form.hidden_field :title %>
+  <%= form.hidden_field :content %>
+  <%= form.hidden_field :album %>
+  <%= form.hidden_field :artist %>
+  <%= hidden_field_tag :"cache[artwork]",@citicize.artwork.cache_name %>
+
+
+  <p>タイトル:<%= @citicize.title %></p>
+  <p>本文:<%= @citicize.content %></p>
+  <p>アルバム名:<%= @citicize.album %></p>
+  <p>アーティスト名:<%= @citicize.artist %></p>
+  <p><%= image_tag(@citicize.artwork.url) %></p>
+  <%= form.submit "登録する" %>
+<% end %>
+
+<%= form_with(model: @citicize, local: true, url: new_citicize_path,method: 'get') do |form| %>
+  <%= form.hidden_field :title %>
+  <%= form.hidden_field :content %>
+  <%= form.hidden_field :album %>
+  <%= form.hidden_field :artist %>
+  <%= hidden_field_tag :"cache[artwork]",@citicize.artwork.cache_name %>
+  <%= form.submit "もどる", name: 'back' %>
+<% end %>

@@ -1,0 +1,9 @@
+<ul>
+  <% comments.each do |comment| %>
+    <% unless comment.id.nil? %>
+      <li>
+        <p><%= comment.content %><%= link_to '削除する', [comment.citicize, comment],confirm: '本当に削除しますか？', method: :delete %></p>
+      </li>
+    <% end %>
+  <% end %>
+</ul>

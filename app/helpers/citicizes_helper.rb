@@ -1,0 +1,9 @@
+module CiticizesHelper
+  def choose_new_or_edit
+    if action_name == 'new' || action_name == 'confirm'
+      confirm_citicizes_path
+    elsif action_name == 'edit'
+      citicize_path
+    end
+  end
+end

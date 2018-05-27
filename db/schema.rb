@@ -10,16 +10,50 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180521112645) do
+ActiveRecord::Schema.define(version: 20180527025243) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "citicizes", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.string "album"
+    t.string "artist"
+    t.string "artwork"
+    t.integer "estimate"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_citicizes_on_user_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.bigint "citicize_id"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["citicize_id"], name: "index_comments_on_citicize_id"
+  end
+
+  create_table "estimates", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "citicize_id"
+    t.integer "rate"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["citicize_id"], name: "index_estimates_on_citicize_id"
+    t.index ["user_id"], name: "index_estimates_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "provider", default: "", null: false
     t.string "uid", default: "", null: false
+    t.string "name"
+    t.string "nickname"
+    t.string "image_url"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -34,4 +68,6 @@ ActiveRecord::Schema.define(version: 20180521112645) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "citicizes", "users"
+  add_foreign_key "comments", "citicizes"
 end

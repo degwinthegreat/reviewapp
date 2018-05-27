@@ -1,0 +1,8 @@
+<h1>よう</h1>
+<%= form_with(model: @estimate, local: true, url: estimates_path) do |form| %>
+<%= form.hidden_field :citicize_id %>
+<%= form.hidden_field :user_id %>
+<%= form.label :rate %>
+<%= form.text_field :rate %>
+<%= form.submit %>
+<% end %>

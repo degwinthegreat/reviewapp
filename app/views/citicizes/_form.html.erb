@@ -1,0 +1,39 @@
+<%= form_with(model: @citicize, local: true) do |form| %>
+  <% if @citicize.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @citicize.errors.count %>件のエラーがあります。</h2>
+      <ul>
+
+      <% @citicize.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<% end %>
+
+<%= form_with(model: @citicize, local: true, url: confirm_citicizes_path) do |form| %>
+  <div class="citicize_title">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+  <div class="citicize_title">
+    <%= form.label :content %>
+    <%= form.text_field :content %>
+  </div>
+  <div class="album_title">
+    <%= form.label :album %>
+    <%= form.text_field :album %>
+  </div>
+  <div class="artwork">
+    <%= form.label :artwork %>
+    <%= image_tag(@citicize.artwork.url) if @citicize.artwork.url %>
+    <%= form.file_field :artwork, if: :citicize_artwork %>
+    <%= form.hidden_field :cache_artwork %>
+  <div class="artist_name">
+    <%= form.label :artist %>
+    <%= form.text_field :artist %>
+    <%= form.hidden_field :user_id, value: current_user.id %>
+  </div>
+  <%= form.submit %>
+<% end %>

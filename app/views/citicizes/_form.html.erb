@@ -12,7 +12,7 @@
   <% end %>
 <% end %>
 
-<%= form_with(model: @citicize, local: true, url: confirm_citicizes_path) do |form| %>
+<%= form_with(model: @citicize, local: true, url: choose_new_or_edit) do |form| %>
   <div class="citicize_title">
     <%= form.label :title %>
     <%= form.text_field :title %>

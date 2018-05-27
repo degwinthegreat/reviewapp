@@ -1,26 +1,34 @@
-<h1>レビュー一覧</h1>
+<div class="review-index-page">
+  <h1>い～ビュー</h1>
 
-<p><%= notice %></p>
+  <p><%= notice %></p>
 
-<table>
-  <tr>
-    <th>タイトル</th>
-    <th>内容</th>
-  </tr>
-
-<% @citicizes.each do |citicize| %>
-  <tr>
-    <td><%= citicize.title %></td>
-    <td><%= citicize.content %></td>
-    <td><%= citicize.album %></td>
-    <td><%= citicize.artist %></td>
-
-    <td><%= link_to '詳細を確認する', citicize_path(citicize.id) %></td>
-    <td><%= link_to 'レビューを編集する', edit_citicize_path(citicize.id) %></td>
-    <td><%= link_to 'レビューを削除する', citicize_path(citicize.id), method: :delete,data: { confirm: '本当に削除しますか？'}%>
-  </tr>
-  <% end %>
-</table>
-
-<%= link_to 'レビュー一覧画面にもどる', citicizes_path %>
-<%= link_to '新しいレビューを投稿する', new_citicize_path %>
+  <div class="container">
+    <div class="row">
+      <% @citicizes.each do |citicize| %>
+        <div class="col-sm-3 col-md-3 card">
+          <%= link_to citicize_path(citicize.id) do %>
+            <div class="image-cotainer">
+              <%= image_tag(citicize.artwork, :class => "artwork") %>
+            </div>
+            <h4 class="album-title"><%= citicize.album %></h4>
+          <% end %>
+          <p class="util-links-container">
+              <span>
+                  <button type="button" class="btn btn-primary btn-circle">
+                    <%= link_to edit_citicize_path(citicize.id) do %>
+                      <span class="glyphicon glyphicon-pencil"></span>
+                    <% end %>
+                  </button>
+                  <button type="button" class="btn btn-danger btn-circle">
+                    <%= link_to citicize_path(citicize.id), method: :delete, data: { confirm: 'are you serious?'} do %>
+                      <span class="glyphicon glyphicon-trash"></span>
+                    <% end %>
+                  </button>
+              </span>
+          </p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

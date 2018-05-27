@@ -1,3 +1,37 @@
 // Place all the styles related to the citicizes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+    background: #EBF0F1;
+    padding: 0;
+    margin: 0;
+    min-height: 100vh;
+}
+
+.card {
+    margin-bottom: 40px;
+}
+
+.album-title {
+    color: #000;
+    min-height: 2.8em;
+}
+
+.artwork {
+    width: 100%;
+    height: auto;
+}
+
+.btn-circle {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 6px 0;
+    font-size: 12px;
+    line-height: 1;
+    border-radius: 50%;
+    a {
+        color: #FFF;
+    }
+}

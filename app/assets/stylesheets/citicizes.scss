@@ -3,12 +3,62 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 body {
-    background: #EBF0F1;
+    background: #E8EEEF;
     padding: 0;
     margin: 0;
     min-height: 100vh;
 }
 
+//header
+.navbar {
+    font-size:20px;
+    font-weight:bold;
+    text-align: left;
+    width: 100%;
+}
+
+.container {
+    width: 100%;
+    height: 50px;
+    background: #E8EEEF;
+}
+
+.navbar-nav {
+    float: right !important;
+}
+
+.navbar-collapse {
+    width: 100%;
+    height: 50px !important;
+}
+
+.navbar-header {
+  width: 100%;
+}
+
+.title {
+    display: block;
+    text-align: left;
+    float: left;
+}
+
+.navbar-toggle  {
+    display: block;
+}
+
+.navbar-brand {
+    text-align: left;
+    display: block;
+    margin-right: auto;
+}
+
+.clearfix:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+//index
 .card {
     margin-bottom: 40px;
 }
@@ -57,3 +107,58 @@ body {
         color: #FFF;
     }
 }
+
+/* show */
+.review-title-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.album-info-review-title {
+    font-size:  34px;
+    line-height: 1.3em;
+    text-align: center;
+}
+
+.review-post-user-name {
+    font-family: inherit;
+    font-size: 100%;
+    font-style: inherit;
+    font-weight: inherit;
+    margin: 0;
+    outline: 0;
+    padding: 0;
+    text-align: right;
+    color: #666;
+}
+
+.album-details-container {
+    display: flex;
+    margin: 20px;
+}
+
+.album-info-container {
+    padding: 10px;
+}
+
+.album-info-title {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.album-info-artist-name {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+
+.album-info-review-title {
+    margin-top: 40px;
+    font-weight: bold;
+}
+
+
+
+

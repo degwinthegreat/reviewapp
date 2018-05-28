@@ -1,6 +1,4 @@
 <div class="review-index-page">
-  <h1>い～ビュー</h1>
-
   <p><%= notice %></p>
 
   <div class="container">
@@ -11,22 +9,25 @@
             <div class="image-container">
               <%= image_tag(citicize.artwork, :class => "artwork") %>
             </div>
+            <%= @rate_avg %>
             <h4 class="album-title"><%= citicize.album %></h4>
           <% end %>
+          <% if citicize.user_id == current_user.id %>
           <p class="util-links-container">
-              <span>
-                  <button type="button" class="btn btn-primary btn-circle">
-                    <%= link_to edit_citicize_path(citicize.id) do %>
-                      <span class="glyphicon glyphicon-pencil"></span>
-                    <% end %>
-                  </button>
-                  <button type="button" class="btn btn-danger btn-circle">
-                    <%= link_to citicize_path(citicize.id), method: :delete, data: { confirm: 'are you serious?'} do %>
-                      <span class="glyphicon glyphicon-trash"></span>
-                    <% end %>
-                  </button>
-              </span>
+            <span>
+                <button type="button" class="btn btn-primary btn-circle">
+                  <%= link_to edit_citicize_path(citicize.id) do %>
+                    <span class="glyphicon glyphicon-pencil"></span>
+                  <% end %>
+                </button>
+                <button type="button" class="btn btn-danger btn-circle">
+                  <%= link_to citicize_path(citicize.id), method: :delete, data: { confirm: '本当に削除しますか?'} do %>
+                    <span class="glyphicon glyphicon-trash"></span>
+                  <% end %>
+                </button>
+            </span>
           </p>
+          <% end %>
         </div>
       <% end %>
     </div>

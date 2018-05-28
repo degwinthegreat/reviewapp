@@ -12,11 +12,11 @@
 
     <div class="field">
       <%= form.label :content %>
-      <%= form.text_area :content %>
+      <%= form.text_area :content, :class => 'comment-text-area' %>
     </div>
 
     <div class="actions">
-      <%= form.submit %>
+      <%= form.submit :class => "btn btn-primary" %>
     </div>
-    <% end %>
+  <% end %>
     

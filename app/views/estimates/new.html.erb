@@ -2,7 +2,9 @@
 <%= form_with(model: @estimate, local: true, url: estimates_path) do |form| %>
 <%= form.hidden_field :citicize_id %>
 <%= form.hidden_field :user_id %>
-<%= form.label :rate %>
-<%= form.text_field :rate %>
-<%= form.submit %>
+    <%= form.label :rate %>
+    <%= form.text_field :rate, id: :review_rate %>
+</div>
+
+<%= form.submit "レビュー評価", :class => "btn btn-primary" %>
 <% end %>

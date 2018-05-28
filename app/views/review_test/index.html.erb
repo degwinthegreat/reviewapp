@@ -1,15 +1,23 @@
 <p><%= notice %><%= alert %></p>
 <div class="jumbotron">
-      <div class="jumbotoron-container">
-        <h1>いいレビューを評価しよう</h1>
-        <p>いいモノにはいいレビューが集まる</p>
-        <a class="btn btn-primary btn-lg" href="#" role="button">Learn more »</a>
-      </div>
-    </div>
-<% if user_signed_in? %>
-  <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-<% else %>
-  <%= link_to 'Googleでサインアップしてね', user_google_omniauth_authorize_path %>
-  <%= link_to 'Facebookでサインアップしてね', user_facebook_omniauth_authorize_path %>
-  <%= link_to 'Twitterでサインアップしてね', user_twitter_omniauth_authorize_path %>
-<% end %>
+  <div class="jumbotoron-container">
+    <h1>レビューを評価しよう</h1>
+    <p>いいモノにはいいレビューが集まる</p>
+    <% if user_signed_in? %>
+      <%= link_to citicizes_path do %>
+        <button type="button" class="btn btn-light">レビュー一覧へ</button>
+      <% end %>
+    <% else %>
+      <%= link_to  user_google_omniauth_authorize_path do %>
+        <button type="button" class="btn btn-social btn-gplus"><i class="fa fa-google-plus left"></i> Google +</button>
+      <% end %>
+      <%= link_to  user_facebook_omniauth_authorize_path do %>
+        <button type="button" class="btn btn-social btn-fb"><i class="fa fa-facebook left"></i> Facebook</button>
+      <% end %>
+      <%= link_to  user_twitter_omniauth_authorize_path do %>
+        <button type="button" class="btn btn-social btn-tw"><i class="fa fa-twitter left"></i> Twitter</button>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+

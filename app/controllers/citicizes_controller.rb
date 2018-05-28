@@ -37,8 +37,16 @@ class CiticizesController < ApplicationController
   def show
     @estimates = current_user.estimates
     @estimate = @estimates.where(citicize_id: @citicize.id)
-    @comment = @citicize.comments.build
-    @comments = @citicize.comments
+    @estimates_rates = Estimate.where(citicize_id: @citicize.id)
+    if @estimates_rates.count != 0
+      @rate = 0
+      for i in 0..@estimates_rates.count-1
+        @rate += @estimates_rates[i].rate
+      end
+      @rate_avg = (@rate/ @estimates_rates.count)
+    end
+      @comment = @citicize.comments.build
+      @comments = @citicize.comments
   end
 
   def edit

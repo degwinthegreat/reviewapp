@@ -13,27 +13,31 @@
 <% end %>
 
 <%= form_with(model: @citicize, local: true, url: choose_new_or_edit) do |form| %>
-  <div class="citicize_title">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
-  <div class="citicize_title">
-    <%= form.label :content %>
-    <%= form.text_field :content %>
-  </div>
-  <div class="album_title">
-    <%= form.label :album %>
-    <%= form.text_field :album %>
-  </div>
-  <div class="artwork">
-    <%= form.label :artwork %>
-    <%= image_tag(@citicize.artwork.url) if @citicize.artwork.url %>
-    <%= form.file_field :artwork, if: :citicize_artwork %>
-    <%= form.hidden_field :cache_artwork %>
-  <div class="artist_name">
-    <%= form.label :artist %>
-    <%= form.text_field :artist %>
-    <%= form.hidden_field :user_id, value: current_user.id %>
-  </div>
-  <%= form.submit %>
+   <div class="form-group　col-sm-6 col-md-6">
+    <div class="artwork_form">
+       <p><%= form.label :artwork %></p>
+      <p>
+       <%= image_tag(@citicize.artwork.url) if @citicize.artwork.url %>
+      </p>
+        <%= form.file_field :artwork, if: :citicize_artwork　%>
+        <%= form.hidden_field :cache_artwork %>
+    </div>
+    <div class="album_title">
+      <%= form.label :album %>
+      <%= form.text_field :album,:class=>"form-control", :placeholder => "アルバムタイトル" %>
+    </div>
+    <div class="artist_name">
+      <%= form.label :artist %>
+      <%= form.text_field :artist,:class=>"form-control", :placeholder => "アーティスト名"%>
+      <%= form.hidden_field :user_id, value: current_user.id %>
+    </div>
+    <div class="citicize_title">
+      <%= form.label :title %>
+      <%= form.text_field :title,:class=>"form-control", :placeholder => "レビュータイトル"%>
+    </div>
+    <div class="citicize_content">
+      <%= form.label :content %>
+      <%= form.text_area :content,:class=>"form-control", :placeholder => "本文" %>
+    </div>
+    <%= form.submit :value =>"投稿する", :class=>"btn btn-primary submit-button"%>
 <% end %>

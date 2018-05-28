@@ -1,26 +1,36 @@
-<h3>以下の内容で、送信する。</h3>
+<div class="confirm-container col-sm-6 col-md-6">
+  <h3>以下の内容で、送信する。</h3>
+  <table class="table table-striped">
+  <%= form_with(model: @citicize, url: citicizes_path, local: true) do |form| %>
+    <%= form.hidden_field :title %>
+    <%= form.hidden_field :content %>
+    <%= form.hidden_field :album %>
+    <%= form.hidden_field :artist %>
+    <%= hidden_field_tag :"cache[artwork]",@citicize.artwork.cache_name %>
 
-<%= form_with(model: @citicize, url: citicizes_path, local: true) do |form| %>
-  <%= form.hidden_field :title %>
-  <%= form.hidden_field :content %>
-  <%= form.hidden_field :album %>
-  <%= form.hidden_field :artist %>
-  <%= hidden_field_tag :"cache[artwork]",@citicize.artwork.cache_name %>
-
-
-  <p>タイトル:<%= @citicize.title %></p>
-  <p>本文:<%= @citicize.content %></p>
-  <p>アルバム名:<%= @citicize.album %></p>
-  <p>アーティスト名:<%= @citicize.artist %></p>
-  <p><%= image_tag(@citicize.artwork.url) %></p>
-  <%= form.submit "登録する" %>
+    <%= image_tag(@citicize.artwork.url , :class=>"artwork-confirm-panel") if @citicize.artwork.present? %>  
+  <tr>
+    <td>タイトル:<%= @citicize.title %></td>
+  </tr>
+  <tr>
+    <td>本文:<%= @citicize.content %></td>
+  </tr>
+  <tr>  
+    <td>アルバム名:<%= @citicize.album %></td>
+  </tr>
+  <tr>  
+    <td>アーティスト名:<%= @citicize.artist %></td>
+  </tr>  
+</table>
+  <%= form.submit "登録する", :class=>"btn btn-primary"%>
+  <% end %>
+  
+  <%= form_with(model: @citicize, local: true, url: new_citicize_path,method: 'get') do |form| %>
+    <%= form.hidden_field :title %>
+    <%= form.hidden_field :content %>
+    <%= form.hidden_field :album %>
+    <%= form.hidden_field :artist %>
+    <%= hidden_field_tag :"cache[artwork]",@citicize.artwork.cache_name %>
+    <%= form.submit "もどる", name: 'back', :class=>"btn btn-success" %>
 <% end %>
-
-<%= form_with(model: @citicize, local: true, url: new_citicize_path,method: 'get') do |form| %>
-  <%= form.hidden_field :title %>
-  <%= form.hidden_field :content %>
-  <%= form.hidden_field :album %>
-  <%= form.hidden_field :artist %>
-  <%= hidden_field_tag :"cache[artwork]",@citicize.artwork.cache_name %>
-  <%= form.submit "もどる", name: 'back' %>
-<% end %>
+</div>

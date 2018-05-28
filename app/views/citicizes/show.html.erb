@@ -21,10 +21,15 @@
     <p class="album-info-review-content"><%= @citicize.content %></p>
     <% if @citicize.user_id == current_user %>
       <%= link_to '編集', edit_citicize_path(@citicize) %>
-    <% end %> 
+    <% end %>
+    <% if @rate_avg != nil %>
+      <p>評価平均：<%= @rate_avg %></p>
+    <% else %>
+      <p>まだ評価がありません</p>
+    <% end %>
     <% unless @citicize.user_id == current_user %>
     <% if @estimate.present? %>
-      <p><%= @estimate[0].rate %></p>
+      <p>自身の評価：<%= @estimate[0].rate %></p>
       <%= link_to 'レビューの評価を削除する', estimate_path(citicize_id: @citicize.id), method: :delete %>
     <% else %>
       <%= link_to 'レビューを評価する', estimate_path(citicize_id: @citicize.id), method: :post %>
@@ -43,8 +48,6 @@
     <!-- コメント入力欄をレビューの詳細ページに表示するためのrender -->
     <%= render partial: 'comments/form', locals: { comment: @comment, citicize: @citicize } %>
   </div>
-
-  <%= link_to '一覧に戻る', citicizes_path %>
 </div>
 
 

@@ -20,7 +20,7 @@
        <%= image_tag(@citicize.artwork.url) if @citicize.artwork.url %>
       </p>
         <%= form.file_field :artwork, if: :citicize_artwork　%>
-        <%= form.hidden_field :cache_artwork %>
+        <%= form.hidden_field :artwork_cache %>
     </div>
     <div class="album_title">
       <%= form.label :album %>

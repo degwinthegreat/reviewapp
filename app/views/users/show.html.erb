@@ -24,14 +24,14 @@
                 <p class="util-links-container">
                     <span>
                         <button type="button" class="btn btn-primary btn-circle">
-                            <a href="#edit">
+                            <%= link_to edit_user_path(current_user.id) do %>
                                 <span class="glyphicon glyphicon-pencil"></span>
-                            </a>
+                            <% end %>
                         </button>
                         <button type="button" class="btn btn-danger btn-circle">
-                            <a href="#delete">
+                            <%= link_to  user_path( current_user ), data: { confirm: "本当に退会してよろしいですか？" }, method: :delete do %>
                                 <span class="glyphicon glyphicon-trash"></span>
-                            </a>
+                            <% end %>
                         </button>
                     </span>
                 </p>

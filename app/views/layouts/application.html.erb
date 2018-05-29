@@ -18,17 +18,26 @@
           </div>
           <div id="gnavi" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
+              <% if user_signed_in? %>
+              <li>
+                <%= link_to user_path(current_user.id), :class => "mypage-link-icon" do%>
+                  <span class="glyphicon glyphicon-user"></span>
+                <% end %>
+              </li>
+              <% end %>
               <li>
                 <a href="/citicizes">一覧</a>
               </li>
               <li>
                 <a href="/citicizes/new">投稿する</a>
               </li>
-              <li>
-                <%= link_to destroy_user_session_path, method: :delete, data: { confirm: 'ログアウトしますか？'} do %>
-                  <span>ログアウト</span>
-                <% end %>
-              </li>
+              <% if user_signed_in? %>
+                <li>
+                  <%= link_to destroy_user_session_path, method: :delete, data: { confirm: 'ログアウトしますか？'} do %>
+                    <span>ログアウト</span>
+                  <% end %>
+                </li>
+              <% end %>
             </ul>
           </div>
         </div>

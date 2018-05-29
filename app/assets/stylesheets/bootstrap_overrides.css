@@ -5,3 +5,7 @@ body {
 .navbar {
     border: none;
 }
+
+.mypage-link-icon {
+    padding-bottom: 12px!important;
+  }

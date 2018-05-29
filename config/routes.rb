@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     end
     resources :comments
   end
-  resources :users, only: [:show]
+  resources :users, only: [:show, :edit, :update, :destroy]
   resources :sessions, only: [:new, :create, :destroy]
 
   post 'estimates/:id', to: 'estimates#new'

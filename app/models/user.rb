@@ -6,6 +6,7 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: %i(google facebook twitter)
 
          belongs_to :citicize, optional: true
+         has_many :comments, dependent: :destroy
          has_many :citicizes, dependent: :destroy
          has_many :estimates, dependent: :destroy
   def self.create_unique_string

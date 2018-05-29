@@ -2,6 +2,7 @@ class CommentsController < ApplicationController
   def create
     @citicize = Citicize.find(params[:citicize_id])
     @comment = @citicize.comments.build(comment_params)
+    @comment.user_id = current_user.id
     respond_to do |format|
       if @comment.save
         format.js { render :index }
